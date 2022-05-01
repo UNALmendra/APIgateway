@@ -11,6 +11,7 @@ import {
 } from './unpdf/sign/typeDefs';
 
 import {
+	logMutations,
 	logQueries,
 	logTypeDef
 } from './unpdf/logs/typeDefs';
@@ -32,6 +33,7 @@ const mergedTypeDefs = mergeSchemas(
 		signQueries
 	],
 	[
+		logMutations,
 		signMutations
 	]
 );
