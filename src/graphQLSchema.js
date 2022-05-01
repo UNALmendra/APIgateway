@@ -5,24 +5,34 @@ import { makeExecutableSchema } from 'graphql-tools';
 import { mergeSchemas } from './utilities';
 
 import {
-	categoryMutations,
-	categoryQueries,
-	categoryTypeDef
-} from './swarch2022i/categories/typeDefs';
+	signMutations,
+	signQueries,
+	signTypeDef
+} from './unpdf/sign/typeDefs';
 
-import categoryResolvers from './swarch2022i/categories/resolvers';
+import {
+	logQueries,
+	logTypeDef
+} from './unpdf/logs/typeDefs';
+
+import signResolvers from './unpdf/sign/resolvers';
+
+import logResolvers from './unpdf/logs/resolvers';
 
 // merge the typeDefs
 const mergedTypeDefs = mergeSchemas(
 	[
 		'scalar JSON',
-		categoryTypeDef
+		logTypeDef,
+		signTypeDef
+		
 	],
 	[
-		categoryQueries
+		logQueries,
+		signQueries
 	],
 	[
-		categoryMutations
+		signMutations
 	]
 );
 
@@ -31,6 +41,7 @@ export default makeExecutableSchema({
 	typeDefs: mergedTypeDefs,
 	resolvers: merge(
 		{ JSON: GraphQLJSON }, // allows scalar JSON
-		categoryResolvers
+		logResolvers,
+		signResolvers
 	)
 });

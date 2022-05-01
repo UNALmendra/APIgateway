@@ -1,14 +1,14 @@
 FROM node:carbon-slim
 
 # Create app directory
-WORKDIR /swarch2022i_ag
+WORKDIR /apigateway
 
 # Install app dependencies
-COPY package.json /swarch2022i_ag/
+COPY package.json /apigateway/
 RUN npm install
 
 # Bundle app source
-COPY . /swarch2022i_ag/
+COPY . /apigateway/
 RUN npm run prepublish
 
 CMD [ "npm", "run", "runServer" ]
