@@ -11,11 +11,19 @@ import {
 } from './unpdf/sign/typeDefs';
 
 import {
+	imgMutations,
+	imgQueries,
+	imgTypeDef
+} from './unpdf/images/typeDefs';
+
+import {
 	logQueries,
 	logTypeDef
 } from './unpdf/logs/typeDefs';
 
 import signResolvers from './unpdf/sign/resolvers';
+
+import imgResolvers from './unpdf/images/resolvers'
 
 import logResolvers from './unpdf/logs/resolvers';
 
@@ -24,15 +32,18 @@ const mergedTypeDefs = mergeSchemas(
 	[
 		'scalar JSON',
 		logTypeDef,
-		signTypeDef
+		signTypeDef,
+		imgTypeDef
 		
 	],
 	[
 		logQueries,
-		signQueries
+		signQueries,
+		imgQueries
 	],
 	[
-		signMutations
+		signMutations,
+		imgMutations
 	]
 );
 
@@ -42,6 +53,7 @@ export default makeExecutableSchema({
 	resolvers: merge(
 		{ JSON: GraphQLJSON }, // allows scalar JSON
 		logResolvers,
-		signResolvers
+		signResolvers,
+		imgResolvers,
 	)
 });
