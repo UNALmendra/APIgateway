@@ -11,6 +11,8 @@ const resolvers = {
 			generalRequest(`${URL}/img2pdf`, 'POST', img),
 		postPdf: (_, { pdf }) =>
 			generalRequest(`${URL}/pdf2img`, 'POST', pdf),
+		postPdfRange: (_, { firstPage, lastPage, pdf }) =>
+			generalRequest(`${URL}/pdf2img/${firstPage}-${lastPage}`, 'POST', pdf),
 	}
 };
 
