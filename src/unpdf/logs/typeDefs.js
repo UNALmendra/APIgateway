@@ -4,10 +4,17 @@ export const logTypeDef = `
       Description: String
       User: String
       Date: String
+  }
+  input LogInput{
+    doc: String!
+    user: String!
+    description: String!
   }`;
 
 export const logQueries = `
       logsById(Doc: String): Log
   `;
 
-export const logMutations = ``;
+export const logMutations = `
+      postLog(log: LogInput): Log 
+`;

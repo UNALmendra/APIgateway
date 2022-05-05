@@ -1,5 +1,7 @@
 import request from 'request-promise-native';
 import { formatError } from 'graphql';
+import axios from 'axios';
+import response from 'koa/lib/response';
 
 /**
  * Creates a request following the given parameters
@@ -27,6 +29,51 @@ export async function generalRequest(url, method, body, fullResponse) {
 	} catch (err) {
 		return err;
 	}
+}
+
+export async function authRequest(url, method, body, fullResponse) {
+
+	/*
+	const parameters = {
+		method,
+		uri: encodeURI(url),
+		auth: {
+			'username': 'apig',
+			'password': '12345'
+		},
+		headers: {
+			"User-Agent": "Request-Promise"
+		},
+		body,
+		json: true,
+		resolveWithFullResponse: fullResponse
+	};
+	*/
+
+	axios.post(encodeURI(url),body,{
+		headers: {
+			'Content-Type': 'application/json',
+			'Connection': 'keep-alive'
+		},
+		auth: {
+			username: 'admin',
+    		password: 'masterkey'
+		}
+	}).then( function(response){
+		console.log(response);
+		return response;
+	}).catch( function ( error ) {
+		console.log(error)
+		return error;
+	})
+
+	/*
+	try {
+		return await request(parameters);
+	} catch (err) {
+		return err;
+	}
+	*/
 }
 
 /**
