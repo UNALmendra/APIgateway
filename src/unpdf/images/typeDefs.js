@@ -11,5 +11,5 @@ export const imgQueries = `
 export const imgMutations = `
     postImg: Image,
     postPdf: Image,
-    postPdfRange,
+    postPdfRange: Image,
 `;
