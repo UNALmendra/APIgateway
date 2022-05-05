@@ -1,5 +1,5 @@
-import { generalRequest, getRequest } from '../../utilities';
-import { url, port, entryPoint } from './server';
+import { generalRequest } from '../../utilities';
+import { url, port } from './server';
 
 const URL = `http://${url}:${port}/`;
 
@@ -8,9 +8,9 @@ const resolvers = {
 	},
 	Mutation: {
 		splitPdf: (_, { split }) =>
-			generalRequest(`${URL}/split_pdf`, 'GET', split),
+			generalRequest(`${URL}split_pdf`, 'GET', split),
 		mergePdf: (_, { merge }) =>
-			generalRequest(`${URL}/merge_pdf`, 'GET', merge)
+			generalRequest(`${URL}merge_pdf`, 'GET', merge)
 	}
 };
 
