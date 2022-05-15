@@ -12,7 +12,7 @@ export const logTypeDef = `
   }`;
 
 export const logQueries = `
-      logsById(Doc: String): Log
+      logsById(Doc: String): [Log]
   `;
 
 export const logMutations = `
