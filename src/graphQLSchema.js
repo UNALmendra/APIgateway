@@ -11,6 +11,12 @@ import {
 } from './unpdf/sign/typeDefs';
 
 import {
+	documentMutations,
+	documentQueries,
+	documentTypeDef
+} from './unpdf/documents/typeDefs';
+
+import {
 	imgMutations,
 	imgQueries,
 	imgTypeDef
@@ -36,6 +42,8 @@ import logResolvers from './unpdf/logs/resolvers';
 
 import pdfResolvers from './unpdf/pdf/resolvers';
 
+import documentResolvers from './unpdf/documents/resolvers';
+
 // merge the typeDefs
 const mergedTypeDefs = mergeSchemas(
 	[
@@ -43,20 +51,24 @@ const mergedTypeDefs = mergeSchemas(
 		logTypeDef,
 		signTypeDef,
 		imgTypeDef,
-		pdfTypeDef
+		pdfTypeDef,
+		documentTypeDef
 	],
 	[
 		logQueries,
 		signQueries,
 		imgQueries,
-		pdfQueries
+		pdfQueries,
+		documentQueries
 	],
 	[
 		signMutations,
 		imgMutations,
 		logMutations,
-		pdfMutations
-	]
+		pdfMutations,
+		documentMutations
+	],
+	
 );
 
 // Generate the schema object from your types definition.
@@ -67,6 +79,7 @@ export default makeExecutableSchema({
 		logResolvers,
 		signResolvers,
 		imgResolvers,
-		pdfResolvers
+		pdfResolvers,
+		documentResolvers
 	)
 });
