@@ -34,6 +34,12 @@ import {
 	logTypeDef
 } from './unpdf/logs/typeDefs';
 
+import {
+	usersMutations,
+	usersQueries,
+	usersTypeDef
+} from './unpdf/users/typeDefs';
+
 import signResolvers from './unpdf/sign/resolvers';
 
 import imgResolvers from './unpdf/images/resolvers'
@@ -44,6 +50,8 @@ import pdfResolvers from './unpdf/pdf/resolvers';
 
 import documentResolvers from './unpdf/documents/resolvers';
 
+import usersResolvers from './unpdf/users/resolvers';
+
 // merge the typeDefs
 const mergedTypeDefs = mergeSchemas(
 	[
@@ -52,21 +60,24 @@ const mergedTypeDefs = mergeSchemas(
 		signTypeDef,
 		imgTypeDef,
 		pdfTypeDef,
-		documentTypeDef
+		documentTypeDef,
+		usersTypeDef
 	],
 	[
 		logQueries,
 		signQueries,
 		imgQueries,
 		pdfQueries,
-		documentQueries
+		documentQueries,
+		usersQueries
 	],
 	[
 		signMutations,
 		imgMutations,
 		logMutations,
 		pdfMutations,
-		documentMutations
+		documentMutations,
+		usersMutations
 	],
 	
 );
@@ -80,6 +91,7 @@ export default makeExecutableSchema({
 		signResolvers,
 		imgResolvers,
 		pdfResolvers,
-		documentResolvers
+		documentResolvers,
+		usersResolvers
 	)
 });
