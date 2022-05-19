@@ -5,11 +5,6 @@ export const usersTypeDef = `
     email: String
     password: String
   }
-
-  input LoginInput {
-    email: String
-    password: String
-  }
   
   input RegisterInput {
     name: String
@@ -25,5 +20,5 @@ export const usersQueries = `
 
 
 export const usersMutations = `
-  postLogin(logininfo: LoginInput): String
+    postLogin(email: String, password: String): String
 `;

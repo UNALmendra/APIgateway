@@ -9,10 +9,9 @@ const resolvers = {
 			generalRequest(`${URL}/all`, 'GET')
 	},
 	Mutation: {
-		postLogin: (_, { logininfo }) => 
-			generalRequest(`${URL}/login?email=${logininfo.email}&password=${logininfo.password}`, 'POST',)
+		postLogin: (_, { email ,password }) => 
+			generalRequest(`${URL}/login?email=${email}&password=${password}`, 'POST',)
 			,
-			//http://localhost:8080/users/login?email=johan@mail.com&password=123456
 	}
 };
 
