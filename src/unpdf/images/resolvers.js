@@ -7,12 +7,12 @@ const resolvers = {
 	Query: {
 	},
 	Mutation: {
-		postImg: (_, { img }) =>
-			generalRequest(`${URL}/img2pdf`, 'POST', img),
-		postPdf: (_, { pdf }) =>
-			generalRequest(`${URL}/pdf2img`, 'POST', pdf),
-		postPdfRange: (_, { firstPage, lastPage, pdf }) =>
-			generalRequest(`${URL}/pdf2img/${firstPage}-${lastPage}`, 'POST', pdf),
+		postImg: (_, { surl }) =>
+			generalRequest(`${URL}/img2pdf`, 'POST', JSON.parse(`{\r\n    \"url\": \"${surl}\"\r\n}  `)),
+		postPdf: (_, { surl }) => 
+			generalRequest(`${URL}/pdf2img`, 'POST', JSON.parse(`{\r\n    \"url\": \"${surl}\"\r\n}  `)),
+		postPdfRange: (_, { firstPage, lastPage, surl }) =>
+			generalRequest(`${URL}/pdf2img/${firstPage}-${lastPage}`, 'POST', JSON.parse(`{\r\n    \"url\": \"${surl}\"\r\n}  `)),
 	}
 };
 

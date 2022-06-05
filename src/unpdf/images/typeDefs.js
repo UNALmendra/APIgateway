@@ -1,6 +1,6 @@
 export const imgTypeDef = `
   type Image {
-      message: String
+      file: String
   }`;
 
   
@@ -9,7 +9,7 @@ export const imgQueries = `
 
 
 export const imgMutations = `
-    postImg: Image,
-    postPdf: Image,
-    postPdfRange: Image,
+    postImg(surl: String!): Image,
+    postPdf(surl: String!): Image,
+    postPdfRange(surl: String!): Image,
 `;
