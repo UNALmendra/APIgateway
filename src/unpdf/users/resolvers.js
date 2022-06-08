@@ -5,13 +5,13 @@ const URL = `http://${url}:${port}/${entryPoint}`;
 
 const resolvers = {
 	Query: {
-		allUsers: (_,) =>
-			generalRequest(`${URL}/all`, 'GET')
 	},
 	Mutation: {
-		postLogin: (_, { email ,password }) => 
-			generalRequest(`${URL}/login?email=${email}&password=${password}`, 'POST',)
+		postLogIn: (_, { username ,password }) => 
+			generalRequest(`${URL}/signin`, 'POST',{username,password})
 			,
+		postSignUp: (_, { username ,password }) => 
+			generalRequest(`${URL}/signup`, 'POST',{username,password}),
 	}
 };
 
